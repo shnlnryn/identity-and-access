@@ -1,0 +1,21 @@
+#This Rest api call retrieves all ACTIVE users using Invoke-RestMethod
+# Much easier than Invoke-WebRequest
+
+
+##References
+# https://developer.okta.com/docs/reference/api/users/#user-operations
+# https://docs.microsoft.com/en-us/powershell/module/microsoft.powershell.utility/invoke-restmethod?view=powershell-6#examples
+
+
+
+$prod_api_token = "your_Okta_apikey"
+$proddomain = 'https://your_domain-admin.okta.com/api/v1/users?filter=status eq "ACTIVE"'
+
+$Headers = @r{
+
+    Authorization= "SSWS $prod_api_token"
+    "Content-Type"= "application/json"
+    
+}
+
+ $ActiveUsers= Invoke-RestMethod -Uri $proddomain -Headers $Headers -Method GET -SslProtocol:Tls12 -FollowRelLink
