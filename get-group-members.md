@@ -33,6 +33,6 @@ $activeUsers = $allusers | Where-Object { $_.status -ne "DEPROVISIONED" }
 
 $activeUsers | Select-Object -ExpandProperty profile | 
 
-  Select-Object -Property login, firstName, lastName, title, city, department | 
+  Select-Object -Property login, firstName, lastName, title, city, department, manager, managerid, officelocation | 
 
   Export-Csv -Path $path -NoTypeInformation
