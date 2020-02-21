@@ -7,7 +7,7 @@ $api_token = "#####Your Okta API KEY#####"
 
 #Change the path below to suit the resulting files location
 
-$path = "d:\temp\US-Vol.csv"
+$path = "d:\temp\myCSV.csv"
 
 $AllUsers = @()
 
