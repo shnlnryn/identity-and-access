@@ -1,6 +1,6 @@
 # Identity and Access Management
 
-##- Azure AD
+## Azure AD
 
 
-##- Okta
+## Okta
