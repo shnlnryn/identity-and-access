@@ -48,4 +48,3 @@ $list | For-Each-Object {
    }
    
    
-   ###  Update attribute
