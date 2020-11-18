@@ -14,3 +14,7 @@ $u = $Users.profile
 
 $u | export-csv -Path /Users/####/users.export-csv
 
+#if export-CSv does not work, use below.
+# $u | Out-File -FilePath d:\temp\exported.csv -NoClobber
+
+
