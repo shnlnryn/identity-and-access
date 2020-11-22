@@ -32,7 +32,7 @@ if ($r) {
  $uri = "https://org-admin.okta.com/api/v1/users/$id"
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Post -Body $body -SslProtocol:Tls12
  Start-Sleep -Seconds 3
- # # Add them to the ok-app-zoom group
+ # # Add them to the okta group
  $uri = "https://org-admin.okta.com/api/v1/groups/GROUPID/users/$id"    ### Add GROUPID
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Put -Body $body -SslProtocol:Tls12
 }
