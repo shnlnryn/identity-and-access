@@ -1,4 +1,4 @@
-## Revoke Azure tokens for a list of users.
+## Revoke Azure tokens for a list of users by upn
 
 $csv = Import-Csv -Path D:\Temp\users.csv
 
