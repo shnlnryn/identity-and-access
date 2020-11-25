@@ -1,4 +1,4 @@
-# Appply a static value in bulk to Okta user profiles.
+# Appply a static value in bulk to Okta user profile attribute.
 
 
 $Header = @{
@@ -27,7 +27,7 @@ $list | For-Each-Object {
    
    $body = @{
      Profile = {
-       okta_user_attribute = "value_here"
+       okta_user_attribute = "value_here"     #replace okta_user_attribute with the custom attribute to update
                 }
              }
              
@@ -35,10 +35,12 @@ $list | For-Each-Object {
    
    if ($r) {
    
+   #Update user profile
+   
    $Userid = $r.Userid
    $null = $r
    $Uri = "https://company-admin.okta.com/api/v1/users/$id"
-   $r= Invoke-RestMethod -Uri $Uri -Headers $Header -Method POst -Body $body -SslProtocol:Tls12
+   $r= Invoke-RestMethod -Uri $Uri -Headers $Header -Method Post -Body $body -SslProtocol:Tls12
    }
    
    Catch {
