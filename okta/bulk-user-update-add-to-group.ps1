@@ -20,7 +20,7 @@ try {
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Get -SslProtocol:Tls12
  $body = @{
  profile = @{
- Customattribute = "Value here". ##### update attribute with a static value
+ 
  }
  }
  | ConvertTo-Json
@@ -28,12 +28,12 @@ if ($r) {
  $id = $r.id
  $null = $r
  
- # Update the profile attribute zoomUserType
+ # Add User to Group ( Required Okta Group ID)
  $uri = "https://org-admin.okta.com/api/v1/users/$id"
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Post -Body $body -SslProtocol:Tls12
  Start-Sleep -Seconds 3
  # # Add them to the okta group
- $uri = "https://org-admin.okta.com/api/v1/groups/GROUPID/users/$id"    ### Add GROUPID
+ $uri = "https://org-admin.okta.com/api/v1/groups/####GROUPID###/users/$id"    ### Add GROUPID
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Put -Body $body -SslProtocol:Tls12
 }
  
