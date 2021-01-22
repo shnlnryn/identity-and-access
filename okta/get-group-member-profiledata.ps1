@@ -5,7 +5,7 @@ Accept = "application/json"
 }
 
 
-$groupmembers = 'https://hillsong-admin.okta.com/api/v1/groups/###GROUPID###/users'
+$groupmembers = 'https://TENANT-admin.okta.com/api/v1/groups/###GROUPID###/users'
 
 
 $Users= Invoke-RestMethod -Uri $groupmembers -Headers $header -Method GET -SslProtocol:Tls12 -FollowRelLink
@@ -14,7 +14,7 @@ $u = $Users.profile
 
 $u | export-csv -Path /Users/####/users.export-csv
 
-#if export-CSv does not work, use below.
+#if export-csv does not work, use below.
 # $u | Out-File -FilePath d:\temp\exported.csv -NoClobber
 
 
