@@ -35,6 +35,8 @@ $users| ForEach-Object {
         login = $uProf.profile.login
         created = $uProf.created
         lastlogin = $uProf.lastlogin
+        passwordChanged = $uprof.passwordChanged
+        lastUpdated = $uProf.lastUpdated
         status = $uProf.status
         }
 
