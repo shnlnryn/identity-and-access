@@ -15,7 +15,7 @@ user3@mydomain.com
 
 
 
-$list | For-Each-Object {
+$list | ForEach-Object {
 
   Write-Verbose -Verbose $_
  
