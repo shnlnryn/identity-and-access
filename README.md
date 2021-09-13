@@ -5,4 +5,4 @@
 
 ## [_Okta_](https://github.com/shnlnryn/identity-and-access/tree/master/azuread)
 
-## [_Active Directory_] https://github.com/shnlnryn/identity-and-access/tree/master/active-directory
+## [_Active Directory_](https://github.com/shnlnryn/identity-and-access/tree/master/active-directory)
