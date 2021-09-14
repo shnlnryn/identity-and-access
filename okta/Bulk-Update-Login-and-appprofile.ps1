@@ -4,6 +4,8 @@ Accept = "application/json"
 'Content-Type' = "application/json"
 }
 
+$oktaTenant = "myOktaTenant"  ## Enter your Okta tenant here
+
 #Add list of user to bulk update. 
 $list = -split @"
 
@@ -20,14 +22,12 @@ try {
  $newu= $u + "@newemaildomain.com"
 
 
-$id + " " + $newu
-
 # Email aliases for proxyaddress attribute
 $smtp1 = "SMTP:" + $newu
 $smtp2 = "smtp:" + $login
 
  # Update login and email in Provisioning app profile
-$uri = "https://***tenant***-admin.okta.com/api/v1/users/$login"
+$uri = "https://$oktaTenant-admin.okta.com/api/v1/users/$login"
 $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Get -SslProtocol:Tls12
  $body = @{
  profile = @{
@@ -44,9 +44,10 @@ $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Get -SslProtocol:Tls12
 if ($r) {
  $id = $r.id
  $null = $r
- 
 
- $uri = "https://***tenant***-admin.okta.com/api/v1/users/$id"
+ $id + " " + $newu
+
+ $uri = "https://$oktaTenant-admin.okta.com/api/v1/users/$id"
  $r = Invoke-RestMethod -Uri $uri -Headers $header -Method Post -Body $body -SslProtocol:Tls12
 
  Write-Host "Prov app updated" -ForegroundColor Green
@@ -57,7 +58,7 @@ if ($r) {
 $SSOAppID = "****Add O365 SSO AppID " #SSO App ID
 
 
-$Appuri = "https://**tenant***-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"            
+$Appuri = "https://$oktaTenant-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"            
 $a= Invoke-RestMethod -Uri $Appuri -Headers $header -Method Get -SslProtocol:Tls12
 
 
@@ -74,7 +75,7 @@ $body = @{
     $id = $a.id
     $null = $a
  
-    $Appuri = "https://****tenant****-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"
+    $Appuri = "https://$oktaTenant-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"
     $a = Invoke-RestMethod -Uri $Appuri -Headers $header -Method Post -Body $body -SslProtocol:Tls12
 
     Write-Host "O365 SSO app updated" -ForegroundColor Yellow
@@ -85,7 +86,7 @@ $body = @{
 $AppID = "***APP2ID****" #App2 ID
 
             
-$App2uri = "https://****tenant***-admin.okta.com/api/v1/apps/$AppID/users/$id"            
+$App2uri = "https://$oktaTenant-admin.okta.com/api/v1/apps/$AppID/users/$id"            
 $a2= Invoke-RestMethod -Uri $Appuri -Headers $header -Method Get -SslProtocol:Tls12
             
             
@@ -101,7 +102,7 @@ $a2= Invoke-RestMethod -Uri $Appuri -Headers $header -Method Get -SslProtocol:Tl
                 $id = $a2.id
                 $null = $a2
              
-                $Appuri = "https://***tenant***-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"
+                $Appuri = "https://$oktaTenant-admin.okta.com/api/v1/apps/$SSOAppID/users/$id"
                 $a2 = Invoke-RestMethod -Uri $App2uri -Headers $header -Method Post -Body $body -SslProtocol:Tls12
 
                 Write-Host "App updated" -ForegroundColor DarkMagenta
