@@ -19,6 +19,7 @@ $report = [pscustomobject]@{
     AccessRights = $perm.AccessRights
 }
 
-}
 
-$report| Export-Csv -Append -path d:\temp\MailboxPermissions_fromList.csv -NoTypeInformation -Force
+
+$report| Export-Csv -Append -path d:\temp\NonOwner_MailboxPermissions.csv -NoTypeInformation -Force
+}
