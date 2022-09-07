@@ -7,6 +7,7 @@ From the Azure Portal, navigate to Function App, and select + Add.
 In the Basics tab, ensure Runtime stack is set to Powershell Core.
 In the Hosting tab, ensure the Consumption (Serverless) plan type is selected.
 Make other preferrable configuration changes, if needed, then click Create.
+
 2. Import Function App Code
 
 In the newly created Function App, select Functions on the left pane and click + Add.
@@ -15,6 +16,7 @@ Enter a unique Function Name and change the default cron schedule to every 10 mi
 Click on Code + Test on the left pane.
 Copy the Function App Code and paste into the Function App run.ps1 editor.
 Click Save.
+
 3. Configure the Function App
 
 In the Function App, select the Function App Name and select Configuration.
